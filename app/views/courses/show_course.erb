@@ -1,0 +1,16 @@
+<div class="course!">
+  <h1>Course Detail</h1>
+  <p><b>Date:</b> <%= @Course.course_date.strftime("%m/%d/%Y") %></p>
+  <p><b>Teacher:</b> <a href="/teachers/<%= @course.teacher.slug %>"><%= @course.teacher.name %></a></p>
+  <p><b>Location:</b> <%= @course.location %></p>
+  <p><b>Course Price:</b> <%= "$#{sprintf("%1.2f", @course.course_price)}" %></p>
+  <p class="course-description"><b>Description:</b> <%= @course.description %></p>
+  <% if logged_in? && current_user.courses.include?(@course)%>
+    <p><a href="/users/<%=current_user.id%>">Your account</a></p>
+    <p><a href="/courses/<%= @course.id %>/edit">Edit</a></p>
+    <p><form action="/courses/<%=@course.id%>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete Course">
+    </form></p>
+  <% end %>
+</div>

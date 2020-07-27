@@ -1,0 +1,33 @@
+<div class="row teacher">
+  <div class="col-md-12">
+    <h1 class="page-title"><%= @teacher.name %></h1>
+  </div>
+  <div class="col-md-6 bio">
+    <h2>Bio</h2>
+    <p class="teacher-bio"><%= @teacher.bio %></p>
+  </div>
+  <div class="col-md-6">
+    <h2>Upcoming Courses</h2>
+      <% @teacher.courses.sort_by {|x| x.course_date }.each do |course| %>
+        <% if course.course_date >= Date.today %>
+          <p class="course-info"><%= "#{course.course_date.strftime("%m/%d/%Y")} - #{course.location} - "%><a href="/courses/<%=course.id%>">See details</a></p>
+        <% end %>
+      <% end %>
+    <h2>Past Courses</h2>
+    <% @teacher.courses.sort_by {|x| x.course_date }.each do |course| %>
+      <% if course.course_date < Date.today %>
+        <p class="course-info"><%= "#{course.course_date.strftime("%m/%d/%Y")} - #{course.location} - "%><a href="/courses/<%=course.id%>">See details</a></p>
+      <% end %>
+    <% end %>
+  </div>
+  <%if logged_in? && current_user.teachers.include?(@teacher)%>
+    <div class="col-md-12">
+      <p><a href="/teachers/<%= @teacher.slug %>/edit">Edit teacher</a></p>
+      <p><a href="/courses/new">Add course</a></p>
+      <p><form action="/teachers/<%=@teacher.slug%>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="Delete Teacher">
+        </form></p>
+    </div>
+  <%end%>
+</div>

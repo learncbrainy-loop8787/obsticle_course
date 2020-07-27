@@ -1,0 +1,23 @@
+<div class="form">
+  <h1>New course</h1>
+  <form action="/courses" method="post">
+    <div class="form-group">
+      <label>Teacher</label><br>
+      <input class="form-control" list="teachers" name="teacher[name]" required placeholder="Teacher Name">
+      <datalist id="teachers">
+        <%current_user.teachers.each do |teacher|%>
+          <option value="<%=teacher.name%>"><%=teacher.name%></option>
+        <%end%>
+      </datalist>
+      <label>Location</label>
+      <input type="text" class="form-control" name="location" required placeholder="Anytown, USA"><br>
+      <label>Date</label>
+      <input type="date" class="form-control" name="course_date" required><br>
+      <label>Course Price</label>
+      <input type="number" class="form-control" name="course_price" required><br>
+      <label>Description</label>
+      <textarea type="email" class="form-control" name="description" placeholder="Your course description here (optional)" rows="6"></textarea><br>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

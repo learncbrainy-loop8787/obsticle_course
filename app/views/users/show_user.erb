@@ -1,0 +1,17 @@
+<div class="user">
+  <h1>Your Account</h1>
+  <p>Username: <%= @user.username %></p>
+  <p>Email: <%= @user.email %></p>
+  <p><a href="/users/<%=@user.id%>/edit">Edit your account</a></p>
+
+  <h2>Your Teachers</h2>
+  <% @user.teachers.each do |teacher| %>
+    <p><%= teacher.name %> - <a href="/teachers/<%= teacher.slug %>">View</a> / <a href="/teachers/<%= teacher.slug %>/edit">Edit</a></p>
+  <% end %>
+    <p><a href="/teachers/new">Add teacher</a></p>
+  <h2>Your Courses</h2>
+  <% @user.courses.each do |course| %>
+    <p><%= course.course_date.strftime("%m/%d/%Y")%> - <%= course.teacher.name %> - <%= course.location %> - <a href="/courses/<%= course.id %>">View</a> / <a href="/courses/<%= course.id %>/edit">Edit</a></p>
+  <% end %>
+  <p><a href="/courses/new">Add course</a></p>
+</div>

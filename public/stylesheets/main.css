@@ -1,0 +1,78 @@
+html, body {
+  width: 100%;
+  height: auto;
+  background: white;
+}
+
+header {
+  width: 100%;
+  background: white;
+  z-index: 1000;
+  text-align: center;
+  position: fixed;
+  padding: 20px 0;
+  height: auto;
+  top: 0;
+  box-shadow: 0 1px 1px gray;
+  border-bottom: 1px solid gray;
+}
+
+.page-title {
+  margin-left: 25px;
+}
+
+header h1 {
+  display: inline;
+  margin-bottom: 20px;
+  margin: auto;
+}
+
+header ul {
+  height: 100%;
+  margin: auto;
+  display: inline;
+  position: absolute;
+  top: 30px;
+  right: 25px;
+}
+
+header li {
+  list-style: none;
+  display: inline;
+  text-align: center;
+}
+
+.course-list, .teacher-list, .form, .teacher, .user, .course  {
+  text-align: center;
+  top: 85px;
+  position: relative;
+}
+
+.form, .course-description, .teacher-bio {
+  margin: auto;
+  max-width: 500px;
+}
+
+#brand {
+  color: black;
+}
+
+#brand:hover {
+  text-decoration: none;
+}
+
+.course-info, .teacher-list p, .teacher p, .course p, .user p {
+  font-size: 1.5em;
+}
+
+.bio {
+  padding-left: 50px;
+}
+
+.row {
+  max-width: 100%;
+}
+
+textarea {
+  resize: none;
+}

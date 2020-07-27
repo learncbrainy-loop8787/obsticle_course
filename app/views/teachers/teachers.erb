@@ -1,0 +1,6 @@
+<div class="teacher-list">
+  <h1>Teachers</h1>
+  <% @teachers.each do |teacher| %>
+    <p><a href="/teachers/<%= teacher.slug %>"><%= teacher.name %></a></p>
+  <% end %>
+</div>

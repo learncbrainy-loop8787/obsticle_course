@@ -1,0 +1,29 @@
+<div class="form">
+  <h1>Edit course</h1>
+  <form action="/courses/<%=@course.id%>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <div class="form-group">
+      <label>Teacher</label><br>
+      <input class="form-control" list="teachers" name="teacher[name]" value="<%=@course.teacher.name%>">
+      <datalist id="teachers">
+        <%current_user.teachers.each do |teacher|%>
+          <option value="<%=teacher.name%>"><%=teacher.name%></option>
+        <%end%>
+      </datalist>
+      <label>Location</label>
+      <input type="text" class="form-control" name="location" required value="<%=@course.location%>"><br>
+      <label>Date</label>
+      <input type="date" class="form-control" name="course_date" required value="<%=@course.course_date.strftime("%Y-%m-%d")%>"><br>
+      <label>Course Price</label>
+      <input type="number" class="form-control" name="course_price" required value="<%=@course.course_price.to_i%>"><br>
+      <label>Description</label>
+      <textarea type="text" class="form-control" name="description" rows="6"><%=@course.description%></textarea><br>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <p><form action="/courses/<%=@course.id%>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Course">
+  </form></p>
+</div>
